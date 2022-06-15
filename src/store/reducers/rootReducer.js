@@ -1,10 +1,21 @@
+import {Component, useEffect, useState} from "react";
+import React from "react";
 
-const initialState = {
+const initState = {
   count: 10,
-  type: ''
+  type: 'Nothing'
 }
 
-const rootReducer = (state = initialState, action) => {
+
+const Data = () => {
+  fetch('https://redux-simple-b7852-default-rtdb.asia-southeast1.firebasedatabase.app/state.json').then(response => response.json()).then(responseData => {
+    console.log(responseData);
+  });
+}
+
+Data();
+
+const rootReducer = (state = initState, action) => {
 
   switch (action.type) {
     case 'PLUS': {
@@ -22,6 +33,7 @@ const rootReducer = (state = initialState, action) => {
 
     default: return state
   }
+
 
 }
 
